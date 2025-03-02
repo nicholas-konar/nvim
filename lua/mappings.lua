@@ -18,14 +18,15 @@ map("n", "<A-v", function()
   require("nvchad.term").new { pos = "vsp" }
 end, { desc = "terminal new vertical term" })
 
+-- shared id so session persists across orientations
 map({ "n", "t" }, "<leader>h", function()
-  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+  require("nvchad.term").toggle { pos = "sp", id = "shared" }
 end, { desc = "terminal toggleable horizontal term" })
 
 map({ "n", "t" }, "<leader>v", function()
-  require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
+  require("nvchad.term").toggle { pos = "vsp", id = "shared" }
 end, { desc = "terminal toggleable vertical term" })
 
 map({ "n", "t" }, "<leader>i", function()
-  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+  require("nvchad.term").toggle { pos = "float", id = "shared" }
 end, { desc = "terminal toggle floating term" })
