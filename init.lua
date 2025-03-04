@@ -36,28 +36,3 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
-
--- debounced autosave
-local wait = 2000
-local timer = nil
-local function autosave()
-  if timer then
-    timer:stop()
-  end
-  timer = vim.loop.new_timer()
-  timer:start(
-    wait,
-    0,
-    vim.schedule_wrap(function()
-      vim.cmd "write"
-      -- vim.notify "Autosaved"
-      timer:close()
-      timer = nil
-    end)
-  )
-end
-
-vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
-  pattern = "*",
-  callback = autosave,
-})
