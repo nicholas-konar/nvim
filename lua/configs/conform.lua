@@ -4,6 +4,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     python = { "black" },
+    javascript = { "prettier" },
   },
 
   format_on_save = {
