@@ -35,4 +35,10 @@ return {
       require("nvim-surround").setup {}
     end,
   },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      filters = { git_ignored = false },
+    },
+  },
 }
