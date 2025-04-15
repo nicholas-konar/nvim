@@ -20,6 +20,8 @@ return {
         "html",
         "css",
         "python",
+        "javascript",
+        "typescript",
       },
       highlight = { enable = true },
       indent = { enable = true },

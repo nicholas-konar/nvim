@@ -2,9 +2,9 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
+local util = require "lspconfig.util"
 
--- EXAMPLE
-local servers = { "html", "cssls", "pyright" }
+local servers = { "html", "cssls", "pyright", "ts_ls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -16,6 +16,13 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- override ts_ls config for better JS support
+lspconfig.ts_ls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  root_dir = util.root_pattern("jsconfig.json", "tsconfig.json", ".git"),
+}
 -- configuring single server, example: typescript
 -- lspconfig.ts_ls.setup {
 --   on_attach = nvlsp.on_attach,
