@@ -1,7 +1,7 @@
 local lspconfig = require "lspconfig"
 local util = require "lspconfig.util"
 
-local servers = { "html", "cssls", "pyright", "ts_ls" }
+local servers = { "html", "cssls", "pyright", "ts_ls", "omnisharp" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -19,4 +19,18 @@ lspconfig.ts_ls.setup {
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
   root_dir = util.root_pattern("jsconfig.json", "tsconfig.json", ".git"),
+}
+
+-- omnisharp (C#) config for Mason + Unity
+lspconfig.omnisharp.setup {
+  cmd = {
+    vim.fn.stdpath "data" .. "/mason/packages/omnisharp/omnisharp",
+    "--languageserver",
+    "--hostPID",
+    tostring(vim.fn.getpid()),
+  },
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  root_dir = util.root_pattern("*.sln", ".git"),
 }
