@@ -5,6 +5,7 @@ local options = {
     html = { "prettier" },
     python = { "black" },
     javascript = { "prettier" },
+    typescript = { "prettier" },
   },
 
   format_on_save = {
