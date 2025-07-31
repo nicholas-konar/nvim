@@ -34,3 +34,8 @@ lspconfig.omnisharp.setup {
   capabilities = nvlsp.capabilities,
   root_dir = util.root_pattern("*.sln", ".git"),
 }
+
+-- prevent fn signature popup from stealing focus
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { focusable = false })
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { focusable = false })
