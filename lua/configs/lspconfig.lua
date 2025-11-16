@@ -19,6 +19,13 @@ lspconfig.ts_ls.setup {
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
   root_dir = util.root_pattern("jsconfig.json", "tsconfig.json", ".git"),
+  init_options = {
+    preferences = {
+      -- leverage TS path aliases
+      importModuleSpecifierPreference = "non-relative",
+      importModuleSpecifier = "non-relative",
+    },
+  },
 }
 
 -- omnisharp (C#) config for Mason + Unity
