@@ -11,6 +11,13 @@ return {
     end,
   },
   {
+    "RRethy/vim-illuminate",
+    lazy = false,
+    config = function()
+      require("configs.illuminate").setup()
+    end,
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
