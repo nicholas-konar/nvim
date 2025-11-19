@@ -12,11 +12,11 @@ M.base46 = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
     -- Bright highlight groups for vim-illuminate + LSP references
-    IlluminatedWordText = { bg = "#ffd75f", fg = "#00212b", bold = true },
-    IlluminatedWordRead = { link = "IlluminatedWordText" },
-    IlluminatedWordWrite = { bg = "#ffb347", fg = "#00212b", bold = true },
+    IlluminatedWordText = { bg = "#b58900", fg = "#00212b", bold = true },
+    IlluminatedWordRead = { bg = "#cb4b16", fg = "#00212b", bold = true },
+    IlluminatedWordWrite = { bg = "#d33682", fg = "#00212b", bold = true },
     LspReferenceText = { link = "IlluminatedWordText" },
-    LspReferenceRead = { link = "IlluminatedWordText" },
+    LspReferenceRead = { link = "IlluminatedWordRead" },
     LspReferenceWrite = { link = "IlluminatedWordWrite" },
   },
 }

@@ -1,9 +1,9 @@
-local lspconfig = require "lspconfig"
 local util = require "lspconfig.util"
 
-local servers = { "html", "cssls", "pyright", "ts_ls", "omnisharp" }
 local nvlsp = require "nvchad.configs.lspconfig"
 local highlight_nav = require "configs.illuminate"
+local lsp = vim.lsp
+local servers = { "html", "cssls", "pyright" }
 
 local function on_attach(client, bufnr)
   nvlsp.on_attach(client, bufnr)
@@ -67,19 +67,22 @@ local function on_attach(client, bufnr)
 end
 
 -- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+local function configure(server, opts)
+  lsp.config(server, vim.tbl_extend("force", {
     on_attach = on_attach,
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
-  }
+  }, opts or {}))
+
+  lsp.enable(server)
+end
+
+for _, server in ipairs(servers) do
+  configure(server)
 end
 
 -- override ts_ls config for better JS support
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
+configure("ts_ls", {
   root_dir = util.root_pattern("jsconfig.json", "tsconfig.json", ".git"),
   init_options = {
     preferences = {
@@ -88,27 +91,21 @@ lspconfig.ts_ls.setup {
       importModuleSpecifier = "non-relative",
     },
   },
-}
+})
 
 -- omnisharp (C#) config for Mason + Unity
-lspconfig.omnisharp.setup {
+configure("omnisharp", {
   cmd = {
     vim.fn.stdpath "data" .. "/mason/packages/omnisharp/omnisharp",
     "--languageserver",
     "--hostPID",
     tostring(vim.fn.getpid()),
   },
-  on_attach = on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
   root_dir = util.root_pattern("*.sln", ".git"),
-}
+})
 
 -- lua_ls for editing Neovim config
-lspconfig.lua_ls.setup {
-  on_attach = on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
+configure("lua_ls", {
   settings = {
     Lua = {
       runtime = { version = "LuaJIT" },
@@ -125,7 +122,7 @@ lspconfig.lua_ls.setup {
       telemetry = { enable = false },
     },
   },
-}
+})
 
 -- prevent fn signature popup from stealing focus
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { focusable = false })

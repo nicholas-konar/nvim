@@ -32,6 +32,13 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
 require "nvchad.autocmds"
+local highlight = require "configs.highlight"
+highlight.apply()
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = vim.api.nvim_create_augroup("UserHighlightOverrides", { clear = true }),
+  callback = highlight.apply,
+})
 
 vim.schedule(function()
   require "mappings"

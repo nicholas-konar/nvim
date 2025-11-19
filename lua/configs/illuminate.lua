@@ -36,7 +36,7 @@ function M.setup()
   illuminate.configure {
     providers = { "lsp" },
     delay = 0,
-    under_cursor = true,
+    under_cursor = false,
     modes_denylist = { "i", "t" },
   }
 end
