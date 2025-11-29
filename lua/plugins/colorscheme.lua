@@ -1,4 +1,3 @@
--- lua/plugins/colorscheme.lua
 return {
   {
     "craftzdog/solarized-osaka.nvim",
@@ -8,4 +7,8 @@ return {
       vim.cmd.colorscheme("solarized-osaka")
     end,
   },
+  {
+        'rebelot/kanagawa.nvim',
+        lazy = false
+    }
 }
