@@ -13,6 +13,18 @@ map("i", "jk", "<ESC>")
 vim.keymap.del("n", "<leader>h")
 vim.keymap.del("n", "<leader>v")
 vim.keymap.del("n", "<leader>ff")
+vim.keymap.del("n", "<C-j>")
+vim.keymap.del("n", "<C-k>")
+
+local neoscroll = require "neoscroll"
+
+map("n", "<C-j>", function()
+  neoscroll.ctrl_d { duration = 220 }
+end, { desc = "Smooth half-page down", silent = true })
+
+map("n", "<C-k>", function()
+  neoscroll.ctrl_u { duration = 220 }
+end, { desc = "Smooth half-page up", silent = true })
 
 -- shared id so session persists across orientations
 map({ "n", "t" }, "<A-h>", function()

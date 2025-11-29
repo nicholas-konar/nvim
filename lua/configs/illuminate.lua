@@ -46,8 +46,11 @@ function M.toggle(bufnr)
   local info = state[buf]
 
   if not info then
-    info = { active = false }
+    info = { active = true }
     state[buf] = info
+    map_nav_keys(buf)
+    illuminate.resume_buf(buf)
+    return
   end
 
   if info.active then
@@ -66,8 +69,9 @@ function M.attach(bufnr)
     return
   end
 
-  state[bufnr] = { active = false }
-  illuminate.pause_buf(bufnr)
+  state[bufnr] = { active = true }
+  map_nav_keys(bufnr)
+  illuminate.resume_buf(bufnr)
 
   vim.api.nvim_create_autocmd("BufUnload", {
     buffer = bufnr,

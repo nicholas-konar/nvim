@@ -21,8 +21,8 @@ local function on_attach(client, bufnr)
   bufmap("n", "gi", vim.lsp.buf.implementation, "LSP: go to implementation")
   bufmap("n", "gr", vim.lsp.buf.references, "LSP: references")
 
-  -- Signature help
-  bufmap("n", "<C-k>", vim.lsp.buf.signature_help, "LSP: signature help")
+  -- Signature help (moved off <C-k> to leave smooth scrolling free)
+  bufmap("n", "<leader>cs", vim.lsp.buf.signature_help, "LSP: signature help")
 
   -- Rename
   bufmap("n", "<leader>cr", vim.lsp.buf.rename, "LSP: rename symbol")

@@ -48,4 +48,11 @@ return {
       filters = { git_ignored = false },
     },
   },
+  {
+    "karb94/neoscroll.nvim",
+    lazy = false,
+    config = function()
+      require "configs.neoscroll"
+    end,
+  },
 }

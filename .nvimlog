@@ -1,0 +1,9 @@
+WRN 2025-11-18T22:01:56.523 ?.31156    server_start:199: Failed to start server: operation not permitted: /var/folders/ct/1t_8bh8j2y9_6b35bbbh54t80000gn/T/nvim.nkonar/EA6PiT/nvim.31156.0
+WRN 2025-11-18T22:02:07.797 ?.31191    server_start:199: Failed to start server: operation not permitted: /var/folders/ct/1t_8bh8j2y9_6b35bbbh54t80000gn/T/nvim.nkonar/JDVk5n/nvim.31191.0
+WRN 2025-11-18T22:02:31.150 ?.31258    server_start:199: Failed to start server: operation not permitted: /var/folders/ct/1t_8bh8j2y9_6b35bbbh54t80000gn/T/nvim.nkonar/TB2ZVv/nvim.31258.0
+WRN 2025-11-18T22:02:40.260 ?.31285    server_start:199: Failed to start server: operation not permitted: /var/folders/ct/1t_8bh8j2y9_6b35bbbh54t80000gn/T/nvim.nkonar/umHRJi/nvim.31285.0
+WRN 2025-11-18T22:02:53.030 ?.31320    server_start:199: Failed to start server: operation not permitted: /var/folders/ct/1t_8bh8j2y9_6b35bbbh54t80000gn/T/nvim.nkonar/b9Xket/nvim.31320.0
+WRN 2025-11-18T22:04:14.789 ?.31555    server_start:199: Failed to start server: operation not permitted: /var/folders/ct/1t_8bh8j2y9_6b35bbbh54t80000gn/T/nvim.nkonar/Hdd97j/nvim.31555.0
+WRN 2025-11-18T22:07:04.969 ?.32039    server_start:199: Failed to start server: operation not permitted: /var/folders/ct/1t_8bh8j2y9_6b35bbbh54t80000gn/T/nvim.nkonar/SW3mmv/nvim.32039.0
+WRN 2025-11-18T22:07:17.664 ?.32074    server_start:199: Failed to start server: operation not permitted: /var/folders/ct/1t_8bh8j2y9_6b35bbbh54t80000gn/T/nvim.nkonar/EI5gi8/nvim.32074.0
+WRN 2025-11-18T22:09:31.202 ?.32439    server_start:199: Failed to start server: operation not permitted: /var/folders/ct/1t_8bh8j2y9_6b35bbbh54t80000gn/T/nvim.nkonar/nFKFSf/nvim.32439.0
