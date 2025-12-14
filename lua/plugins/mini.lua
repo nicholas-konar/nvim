@@ -12,8 +12,8 @@ return {
 			},
 		},
 		config = function()
-			vim.o.background = "dark"
-			vim.cmd.colorscheme("minispring")
+			-- vim.o.background = "dark"
+			-- vim.cmd.colorscheme("minispring")
 			require("mini.files").setup()
 		end,
 	},
