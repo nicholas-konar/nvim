@@ -15,6 +15,12 @@ return {
 			-- vim.o.background = "dark"
 			-- vim.cmd.colorscheme("minispring")
 			require("mini.files").setup()
+			require("mini.comment").setup({
+				mappings = {
+					comment = "<leader>cc",
+					comment_line = "<leader>c",
+				},
+			})
 		end,
 	},
 }
