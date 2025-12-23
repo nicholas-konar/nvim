@@ -1,7 +1,22 @@
 return {
 	"nvim-mini/mini.clue",
 	config = function()
-		require("mini.clue").setup({
+		local clue = require("mini.clue")
+		clue.setup({
+			clues = {
+				clue.gen_clues.builtin_completion(),
+				clue.gen_clues.g(),
+				clue.gen_clues.marks(),
+				clue.gen_clues.registers(),
+				clue.gen_clues.windows(),
+				clue.gen_clues.z(),
+
+				-- teaching hints for mini.ai
+				{ mode = "o", keys = "i", desc = "mini.ai: inside textobject" },
+				{ mode = "o", keys = "a", desc = "mini.ai: around textobject" },
+				{ mode = "x", keys = "i", desc = "mini.ai: select inside textobject" },
+				{ mode = "x", keys = "a", desc = "mini.ai: select around textobject" },
+			},
 			window = {
 				delay = 0,
 				scroll_up = "<C-k>",
@@ -11,7 +26,7 @@ return {
 						anchor = "NE",
 						row = "auto",
 						col = "auto",
-						width = "auto",
+						width = "40",
 					}
 				end,
 			},
@@ -44,6 +59,11 @@ return {
 				-- `z` key
 				{ mode = "n", keys = "z" },
 				{ mode = "x", keys = "z" },
+
+				{ mode = "o", keys = "a" },
+				{ mode = "o", keys = "i" },
+				{ mode = "x", keys = "a" },
+				{ mode = "x", keys = "i" },
 			},
 		})
 	end,
