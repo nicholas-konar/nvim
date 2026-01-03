@@ -1,35 +1,48 @@
+local function telescope(fn)
+	return function()
+		return require("telescope.builtin")[fn]()
+	end
+end
+
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "v0.2.0",
-	dependencies = { "nvim-lua/plenary.nvim" },
+	tag = "*",
+	dependencies = { "nvim-lua/plenary.nvim", { "nvim-telescope/telescope-fzf-native.nvim", build = "make" } },
 	keys = {
 		{
 			"<leader>ff",
-			function()
-				require("telescope.builtin").find_files()
-			end,
+			telescope("find_files"),
 			desc = "Telescope find files",
 		},
 		{
+			"<leader>fo",
+			telescope("oldfiles"),
+			desc = "Telescope recent files",
+		},
+		{
 			"<leader>fg",
-			function()
-				require("telescope.builtin").live_grep()
-			end,
+			telescope("live_grep"),
 			desc = "Telescope live grep",
 		},
 		{
 			"<leader>fb",
-			function()
-				require("telescope.builtin").buffers()
-			end,
+			telescope("buffers"),
 			desc = "Telescope buffers",
 		},
 		{
+			"<leader>fib",
+			telescope("current_buffer_fuzzy_find"),
+			desc = "Telescope find in current buffer",
+		},
+		{
 			"<leader>fh",
-			function()
-				require("telescope.builtin").help_tags()
-			end,
+			telescope("help_tags"),
 			desc = "Telescope help tags",
+		},
+		{
+			"<leader>fw",
+			telescope("grep_string"),
+			desc = "Telescope grep string",
 		},
 	},
 	config = function()
