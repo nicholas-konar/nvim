@@ -20,7 +20,7 @@ return {
 			desc = "Telescope recent files",
 		},
 		{
-			"<leader>fg",
+			"<leader>fw",
 			telescope("live_grep"),
 			desc = "Telescope live grep",
 		},
@@ -30,9 +30,19 @@ return {
 			desc = "Telescope buffers",
 		},
 		{
+			"<leader>fi",
+			"<Nop>",
+			desc = "Telescope find in ...",
+		},
+		{
 			"<leader>fib",
 			telescope("current_buffer_fuzzy_find"),
 			desc = "Telescope find in current buffer",
+		},
+		{
+			"<leader>fm",
+			telescope("marks"),
+			desc = "Telescope find marks",
 		},
 		{
 			"<leader>fh",
@@ -40,9 +50,24 @@ return {
 			desc = "Telescope help tags",
 		},
 		{
-			"<leader>fw",
+			"<leader>fs",
 			telescope("grep_string"),
 			desc = "Telescope grep string",
+		},
+		{
+			"<leader>fg",
+			"<Nop>",
+			desc = "Telescope git",
+		},
+		{
+			"<leader>fgs",
+			telescope("git_status"),
+			desc = "Telescope git status",
+		},
+		{
+			"<leader>fgf",
+			telescope("git_files"),
+			desc = "Telescope git files",
 		},
 	},
 	config = function()
