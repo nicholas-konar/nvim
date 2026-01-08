@@ -6,7 +6,6 @@ end
 
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "*",
 	dependencies = { "nvim-lua/plenary.nvim", { "nvim-telescope/telescope-fzf-native.nvim", build = "make" } },
 	keys = {
 		{
@@ -65,6 +64,7 @@ return {
 			desc = "Telescope git status",
 		},
 		{
+			-- might want to make this default, and wire in fallback logic for non-git directories
 			"<leader>fgf",
 			telescope("git_files"),
 			desc = "Telescope git files",
