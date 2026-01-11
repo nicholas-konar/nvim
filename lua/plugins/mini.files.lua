@@ -12,7 +12,11 @@ return {
 			},
 		},
 		config = function()
-			require("mini.files").setup()
+			require("mini.files").setup({
+				mappings = {
+					close = "<Esc>",
+				},
+			})
 		end,
 	},
 }
