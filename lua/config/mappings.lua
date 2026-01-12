@@ -38,6 +38,11 @@ end, { expr = true, desc = "Prev item" })
 vim.keymap.set("i", "<CR>", function()
 	return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
 end, { expr = true, desc = "Confirm selection" })
+
+-- Comment
+map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
+
 -- Telescope
 map("n", "<leader>ff", "<cmd>Telescope git_files<CR>", { desc = "telescope find files" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
