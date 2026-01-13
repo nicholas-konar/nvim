@@ -61,5 +61,11 @@ map(
 	{ desc = "Telescope find all files" }
 )
 
--- Lazygit
-map("n", "<leader>lg", "<cmd>term lazygit<CR><cmd>startinsert<CR>", { desc = "Lazygit terminal" })
+map("n", "<leader>gg", function()
+	-- highlight with - '#002c38'
+	-- border: guifg=#664c00 guibg=#001419
+	local path = "~/.config/lazygit/config.nvim.yml"
+	vim.env.LG_CONFIG_FILE = vim.fn.expand(path)
+	vim.cmd.term("lazygit")
+	vim.cmd.startinsert()
+end, { desc = "Lazygit terminal" })
