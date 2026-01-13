@@ -62,6 +62,7 @@ map(
 	{ desc = "Telescope find all files" }
 )
 
+-- Lazygit
 map("n", "<leader>gg", function()
 	local path = "~/.config/lazygit/config.nvim.yml"
 	vim.env.LG_CONFIG_FILE = vim.fn.expand(path)
