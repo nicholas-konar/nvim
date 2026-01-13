@@ -60,3 +60,6 @@ map(
 	"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
 	{ desc = "Telescope find all files" }
 )
+
+-- Lazygit
+map("n", "<leader>lg", "<cmd>term lazygit<CR><cmd>startinsert<CR>", { desc = "Lazygit terminal" })
