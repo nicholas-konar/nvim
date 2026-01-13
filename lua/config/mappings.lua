@@ -1,8 +1,10 @@
+-- Globals
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 local map = vim.keymap.set
 
+-- Basic QoL
 vim.keymap.set("n", ";", ":", { desc = "enter cmd mode" })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { silent = true })
 
@@ -61,8 +63,6 @@ map(
 )
 
 map("n", "<leader>gg", function()
-	-- highlight with - '#002c38'
-	-- border: guifg=#664c00 guibg=#001419
 	local path = "~/.config/lazygit/config.nvim.yml"
 	vim.env.LG_CONFIG_FILE = vim.fn.expand(path)
 	vim.cmd.term("lazygit")
