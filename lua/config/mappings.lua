@@ -10,10 +10,6 @@ vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Prev buffer" })
 vim.keymap.set("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close buffer" })
 
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {
-	desc = "LSP Rename",
-})
-
 -- Insert mode nav
 vim.keymap.set("i", "<C-h>", "<Left>", { desc = "move left" })
 vim.keymap.set("i", "<C-l>", "<Right>", { desc = "move right" })
@@ -42,6 +38,9 @@ end, { expr = true, desc = "Confirm selection" })
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
+
+-- LSP
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP Rename" })
 
 -- Telescope
 map("n", "<leader>ff", "<cmd>Telescope git_files<CR>", { desc = "Telescope find files" })
