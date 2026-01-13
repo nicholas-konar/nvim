@@ -20,8 +20,9 @@ return {
 		dependencies = { "mason-org/mason.nvim" },
 		opts = {
 			ensure_installed = {
+				"eslint_d",
 				"stylua",
-				"prettier",
+				"prettierd",
 				"black",
 			},
 			run_on_start = true,
