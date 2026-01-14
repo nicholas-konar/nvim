@@ -116,10 +116,10 @@ return {
 			}),
 
 			sources = {
+				{ name = "luasnip" },
 				{ name = "nvim_lsp" },
 				{ name = "nvim_lsp_signature_help" },
 				{ name = "path" },
-				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "nvim_lua" },
 			},
@@ -141,5 +141,21 @@ return {
 				end,
 			},
 		}
+	end,
+	config = function(_, opts)
+		local cmp = require("cmp")
+
+		cmp.setup(opts)
+
+		cmp.setup.filetype("lua", {
+			sources = {
+				{ name = "luasnip" },
+				{ name = "nvim_lua" },
+				{ name = "nvim_lsp" },
+				{ name = "nvim_lsp_signature_help" },
+				{ name = "path" },
+				{ name = "buffer" },
+			},
+		})
 	end,
 }
