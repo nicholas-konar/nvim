@@ -2,6 +2,7 @@
 return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
+	enabled = true,
 	dependencies = {
 		-- completion sources
 		"hrsh7th/cmp-nvim-lsp",
@@ -18,40 +19,14 @@ return {
 	opts = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
+		local float_winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None"
+		local menu_winhighlight =
+			"Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None,Pmenu:NormalFloat"
 
 		-- load VS Code–style snippet collections
 		pcall(function()
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end)
-
-		-- icons for completion item kinds
-		local kind_icons = {
-			Text = "󰉿",
-			Method = "󰆧",
-			Function = "󰆧",
-			Constructor = "",
-			Field = "󰜢",
-			Variable = "󰀫",
-			Class = "󰠱",
-			Interface = "",
-			Module = "",
-			Property = "󰜢",
-			Unit = "󰑭",
-			Value = "󰎠",
-			Enum = "",
-			Keyword = "󰌋",
-			Snippet = "",
-			Color = "󰏘",
-			File = "󰈙",
-			Reference = "󰈇",
-			Folder = "󰉋",
-			EnumMember = "",
-			Constant = "󰏿",
-			Struct = "󰙅",
-			Event = "",
-			Operator = "󰆕",
-			TypeParameter = "󰊄",
-		}
 
 		-- labels for completion sources
 		local source_labels = {
@@ -75,10 +50,19 @@ return {
 				completeopt = "menu,menuone,noinsert",
 			},
 
-			-- bordered completion and documentation windows
+			view = {
+				entries = "custom",
+			},
+
 			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
+				completion = cmp.config.window.bordered({
+					border = "single",
+					winhighlight = menu_winhighlight,
+				}),
+				documentation = cmp.config.window.bordered({
+					border = "single",
+					winhighlight = float_winhighlight,
+				}),
 			},
 
 			mapping = cmp.mapping.preset.insert({
@@ -125,18 +109,9 @@ return {
 			},
 
 			formatting = {
-				fields = { "menu", "abbr", "kind" },
+				fields = { "abbr", "kind", "menu" },
 				format = function(entry, vim_item)
-					vim_item.kind = (kind_icons[vim_item.kind] or "") .. " " .. vim_item.kind
-
-					-- prefer LSP-provided detail when available
-					local detail = entry.completion_item.detail
-					if detail and detail ~= "" then
-						vim_item.menu = detail
-					else
-						vim_item.menu = source_labels[entry.source.name] or ""
-					end
-
+					vim_item.menu = source_labels[entry.source.name] or ""
 					return vim_item
 				end,
 			},
