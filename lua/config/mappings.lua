@@ -24,6 +24,17 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Window down" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Window right" })
 
+-- Copy path
+map("n", "<leader>cp", function()
+	local path = vim.api.nvim_buf_get_name(0)
+	if path == "" or path == nil then
+		vim.notify("No path for current buffer", vim.log.levels.WARN)
+	end
+	local rel = vim.fn.fnamemodify(path, ":.")
+	vim.fn.setreg("+", rel)
+	vim.notify(rel .. " copied to clipboard", vim.log.levels.INFO)
+end, { desc = "Copy relative path" })
+
 -- <Tab> behavior in presence of pop-up menu (e.g. during auto-complete)
 vim.keymap.set("i", "<Tab>", function()
 	return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
