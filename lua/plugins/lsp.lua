@@ -2,15 +2,21 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			vim.lsp.config("lua_ls", {
-				settings = {
-					Lua = {
-						diagnostics = { globals = { "vim" } },
+			local servers = {
+				lua_ls = {
+					settings = {
+						Lua = {
+							diagnostics = { globals = { "vim" } },
+						},
 					},
 				},
-			})
-			vim.lsp.enable("lua_ls")
-			vim.lsp.enable("ts_ls")
+				ts_ls = {},
+			}
+
+			for name, config in pairs(servers) do
+				vim.lsp.config(name, config)
+				vim.lsp.enable(name)
+			end
 		end,
 	},
 }

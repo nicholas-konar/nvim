@@ -52,11 +52,6 @@ end, { expr = true, desc = "Confirm selection" })
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
--- LSP
-map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP Rename" })
-map("n", "gd", vim.lsp.buf.implementation, { desc = "LSP: go to implementation" })
-map("n", "gD", vim.lsp.buf.definition, { desc = "LSP: go to definition" })
-
 -- Telescope
 map("n", "<leader>ff", "<cmd>Telescope git_files<CR>", { desc = "Telescope find files" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope recent files" })
