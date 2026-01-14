@@ -75,3 +75,34 @@ map("n", "<leader>gg", function()
 	vim.cmd.term("lazygit")
 	vim.cmd.startinsert()
 end, { desc = "Lazygit terminal" })
+
+-- LSP (buffer-local)
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local bufnr = args.buf
+		local function bufmap(mode, lhs, rhs, desc)
+			map(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+		end
+
+		-- Navigation
+		bufmap("n", "gd", vim.lsp.buf.definition, "LSP definition")
+		bufmap("n", "gD", vim.lsp.buf.declaration, "LSP declaration")
+		bufmap("n", "gr", vim.lsp.buf.references, "LSP references")
+		bufmap("n", "gi", vim.lsp.buf.implementation, "LSP implementation")
+		bufmap("n", "K", vim.lsp.buf.hover, "LSP hover")
+
+		-- Actions
+		bufmap("n", "<leader>rn", vim.lsp.buf.rename, "LSP rename")
+		bufmap("n", "<leader>ca", vim.lsp.buf.code_action, "LSP code action")
+
+		-- Symbols
+		bufmap("n", "<leader>ds", vim.lsp.buf.document_symbol, "LSP document symbols")
+		bufmap("n", "<leader>ws", vim.lsp.buf.workspace_symbol, "LSP workspace symbols")
+
+		-- Diagnostics
+		bufmap("n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")
+		bufmap("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+		bufmap("n", "<leader>di", vim.diagnostic.open_float, "Line diagnostics")
+		bufmap("n", "<leader>dl", vim.diagnostic.setloclist, "Diagnostics list")
+	end,
+})
