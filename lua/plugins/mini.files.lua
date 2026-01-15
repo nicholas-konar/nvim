@@ -6,7 +6,10 @@ return {
 			{
 				"<leader>e",
 				function()
-					require("mini.files").open()
+					local minifiles = require("mini.files")
+					local path = vim.api.nvim_buf_get_name(0)
+					minifiles.open(path)
+					minifiles.reveal_cwd()
 				end,
 				desc = "MiniFiles.open()",
 			},
