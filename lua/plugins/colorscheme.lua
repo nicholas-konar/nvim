@@ -44,5 +44,14 @@ return {
 		vim.api.nvim_set_hl(0, "LineNrBelow", {
 			fg = "#073642", -- base02
 		})
+
+		-- TypeScript: variable identifiers (Tree-sitter)
+		vim.api.nvim_set_hl(0, "@variable.typescript", { fg = "#9FACAC" })
+
+		-- TypeScript/TSX: imports and global test identifiers
+		vim.api.nvim_set_hl(0, "@keyword.import.typescript", { fg = "#859800" })
+		vim.api.nvim_set_hl(0, "@keyword.import.tsx", { fg = "#859800" })
+		vim.api.nvim_set_hl(0, "@variable.builtin.typescript", { fg = "#859800" })
+		vim.api.nvim_set_hl(0, "@variable.builtin.tsx", { fg = "#859800" })
 	end,
 }
