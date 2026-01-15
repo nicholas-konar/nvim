@@ -53,5 +53,8 @@ return {
 		vim.api.nvim_set_hl(0, "@keyword.import.tsx", { fg = "#859800" })
 		vim.api.nvim_set_hl(0, "@variable.builtin.typescript", { fg = "#859800" })
 		vim.api.nvim_set_hl(0, "@variable.builtin.tsx", { fg = "#859800" })
+
+		-- TypeScript: global namespace (e.g. jest via LSP semantic tokens)
+		vim.api.nvim_set_hl(0, "@lsp.type.namespace.typescript", { fg = "#D33682" })
 	end,
 }
