@@ -35,14 +35,18 @@ map("n", "<leader>cp", function()
 	vim.notify(rel .. " copied to clipboard", vim.log.levels.INFO)
 end, { desc = "Copy relative path" })
 
--- <Tab> behavior in presence of pop-up menu (e.g. during auto-complete)
+-- Treesitter-based tabout (fallback when cmp/snippets aren't active)
 vim.keymap.set("i", "<Tab>", function()
-	return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
-end, { expr = true, desc = "Next item" })
+	return require("config.tabout_ts").jump_forward() and "" or ""
+end, { expr = true, desc = "Step out" })
 
 vim.keymap.set("i", "<S-Tab>", function()
-	return vim.fn.pumvisible() == 1 and "<C-p>" or "<S-Tab>"
-end, { expr = true, desc = "Prev item" })
+	return require("config.tabout_ts").jump_backward() and "" or ""
+end, { expr = true, desc = "Step in" })
+
+vim.keymap.set("i", "<C-Tab>", function()
+	return "\t"
+end, { expr = true, desc = "Insert tab character" })
 
 vim.keymap.set("i", "<CR>", function()
 	return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
