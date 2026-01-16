@@ -19,7 +19,6 @@ return {
 	opts = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
-		local tabout = require("config.tabout_ts")
 		local float_winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None"
 		local menu_winhighlight =
 			"Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None,Pmenu:NormalFloat"
@@ -74,9 +73,6 @@ return {
 					elseif luasnip.expand_or_jumpable() then
 						luasnip.expand_or_jump()
 					else
-						if tabout.jump_forward() then
-							return
-						end
 						fallback()
 					end
 				end, { "i", "s" }),
@@ -87,14 +83,17 @@ return {
 					elseif luasnip.jumpable(-1) then
 						luasnip.jump(-1)
 					else
-						if tabout.jump_backward() then
-							return
-						end
 						fallback()
 					end
 				end, { "i", "s" }),
 
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
+				["<CR>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.confirm({ select = true })
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
 
 				-- documentation and control
 				["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
