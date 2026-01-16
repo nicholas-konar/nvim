@@ -24,11 +24,6 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Window down" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Window right" })
 
--- Expand pairs on <CR>
-vim.keymap.set("i", "<CR>", function()
-	return require("mini.pairs").cr()
-end, { expr = true, noremap = true, buffer = true })
-
 -- Copy path
 map("n", "<leader>cp", function()
 	local path = vim.api.nvim_buf_get_name(0)
