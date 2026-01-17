@@ -18,6 +18,7 @@ return {
 	},
 	opts = function()
 		local cmp = require("cmp")
+		local context = require("cmp.config.context")
 		local luasnip = require("luasnip")
 		local float_winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None"
 		local menu_winhighlight =
@@ -38,6 +39,20 @@ return {
 		}
 
 		return {
+
+			enabled = function()
+				-- disable in comments
+				if context.in_treesitter_capture("comment") or context.in_syntax_group("Comment") then
+					return false
+				end
+
+				-- disable in strings
+				-- if context.in_treesitter_capture("string") or context.in_syntax_group("String") then
+				-- 	return false
+				-- end
+
+				return true
+			end,
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
