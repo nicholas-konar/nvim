@@ -30,21 +30,19 @@ return {
 				hl.CmpItemKindStruct = { fg = "#cb4b16" }
 				hl.CmpItemKindEnum = { fg = "#859900" }
 				hl.CmpItemKindConstant = { fg = "#b58900" }
+
+				-- treesitter groups (must be accessed via string key)
+				hl["@variable.typescript"] = { fg = "#9FACAC" }
+				hl["@variable.builtin.typescript"] = { fg = "#859800" }
+				hl["@variable.builtin.tsx"] = { fg = "#859800" }
+				hl["@keyword.import.typescript"] = { fg = "#859800" }
+				hl["@keyword.import.tsx"] = { fg = "#859800" }
+
+				-- lsp global namespaces (e.g. jest)
+				hl["@lsp.type.namespace.typescript"] = { fg = "#D33682" }
 			end,
 		})
 
 		vim.cmd.colorscheme("solarized-osaka")
-
-		-- TypeScript: variable identifiers (Tree-sitter)
-		vim.api.nvim_set_hl(0, "@variable.typescript", { fg = "#9FACAC" })
-
-		-- TypeScript/TSX: imports and global test identifiers
-		vim.api.nvim_set_hl(0, "@keyword.import.typescript", { fg = "#859800" })
-		vim.api.nvim_set_hl(0, "@keyword.import.tsx", { fg = "#859800" })
-		vim.api.nvim_set_hl(0, "@variable.builtin.typescript", { fg = "#859800" })
-		vim.api.nvim_set_hl(0, "@variable.builtin.tsx", { fg = "#859800" })
-
-		-- TypeScript: global namespace (e.g. jest via LSP semantic tokens)
-		vim.api.nvim_set_hl(0, "@lsp.type.namespace.typescript", { fg = "#D33682" })
 	end,
 }
