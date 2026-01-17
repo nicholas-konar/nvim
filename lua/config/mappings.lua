@@ -35,14 +35,6 @@ map("n", "<leader>cp", function()
 	vim.notify(rel .. " copied to clipboard", vim.log.levels.INFO)
 end, { desc = "Copy relative path" })
 
-vim.keymap.set("i", "<C-Tab>", function()
-	return "\t"
-end, { expr = true, desc = "Insert tab character" })
-
-vim.keymap.set("i", "<CR>", function()
-	return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
-end, { expr = true, desc = "Confirm selection" })
-
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
