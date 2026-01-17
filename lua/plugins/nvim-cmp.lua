@@ -59,6 +59,10 @@ return {
 				end,
 			},
 
+			performance = {
+				max_view_entries = 5,
+			},
+
 			preselect = cmp.PreselectMode.Item,
 
 			completion = {
@@ -73,6 +77,7 @@ return {
 				completion = cmp.config.window.bordered({
 					border = "single",
 					winhighlight = menu_winhighlight,
+					max_view_entries = 5,
 				}),
 				documentation = cmp.config.window.bordered({
 					border = "single",
