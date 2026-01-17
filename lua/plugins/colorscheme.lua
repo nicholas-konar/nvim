@@ -2,12 +2,19 @@ return {
 	"craftzdog/solarized-osaka.nvim",
 	lazy = false,
 	priority = 1000,
-	init = function()
+	config = function()
 		require("solarized-osaka").setup({
 			transparent = false,
 			dim_inactive = true,
 			on_highlights = function(hl, c)
 				hl.NormalNC = { bg = "#001116" }
+
+				hl.LineNr = { fg = "#586e75" } -- base01 (muted)
+				hl.LineNrAbove = { fg = "#073642" } -- base02 (very subtle)
+				hl.LineNrBelow = { fg = "#073642" } -- base02
+				hl.CursorLineNr = { fg = "#93a1a1", bold = true } -- base1
+
+				-- nvim-cmp groups
 				hl.CmpItemAbbrMatch = { fg = "#b58900", bold = true }
 				hl.CmpItemAbbrMatchFuzzy = { fg = "#b58900", bold = true }
 				hl.CmpItemKindText = { fg = "#2aa198" }
@@ -27,23 +34,6 @@ return {
 		})
 
 		vim.cmd.colorscheme("solarized-osaka")
-
-		vim.api.nvim_set_hl(0, "LineNr", {
-			fg = "#586e75", -- base01 (muted)
-		})
-
-		vim.api.nvim_set_hl(0, "CursorLineNr", {
-			fg = "#93a1a1", -- base1
-			bold = true,
-		})
-
-		vim.api.nvim_set_hl(0, "LineNrAbove", {
-			fg = "#073642", -- base02 (very subtle)
-		})
-
-		vim.api.nvim_set_hl(0, "LineNrBelow", {
-			fg = "#073642", -- base02
-		})
 
 		-- TypeScript: variable identifiers (Tree-sitter)
 		vim.api.nvim_set_hl(0, "@variable.typescript", { fg = "#9FACAC" })
