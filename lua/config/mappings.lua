@@ -5,24 +5,24 @@ vim.g.maplocalleader = "\\"
 local map = vim.keymap.set
 
 -- Basic QoL
-vim.keymap.set("n", ";", ":", { desc = "enter cmd mode" })
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { silent = true })
+map("n", ";", ":", { desc = "enter cmd mode" })
+map("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { silent = true })
 
-vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Prev buffer" })
-vim.keymap.set("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close buffer" })
+map("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Next buffer" })
+map("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Prev buffer" })
+map("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close buffer" })
 
 -- Insert mode nav
-vim.keymap.set("i", "<C-h>", "<Left>", { desc = "move left" })
-vim.keymap.set("i", "<C-l>", "<Right>", { desc = "move right" })
-vim.keymap.set("i", "<C-j>", "<Down>", { desc = "move down" })
-vim.keymap.set("i", "<C-k>", "<Up>", { desc = "move up" })
+map("i", "<C-h>", "<Left>", { desc = "move left" })
+map("i", "<C-l>", "<Right>", { desc = "move right" })
+map("i", "<C-j>", "<Down>", { desc = "move down" })
+map("i", "<C-k>", "<Up>", { desc = "move up" })
 
 -- Window nav
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Window left" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Window down" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Window up" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Window right" })
+map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
+map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
+map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
 
 -- Copy path
 map("n", "<leader>cp", function()
