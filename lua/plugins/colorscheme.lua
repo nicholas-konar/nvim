@@ -40,6 +40,15 @@ return {
 
 				-- lsp global namespaces (e.g. jest)
 				hl["@lsp.type.namespace.typescript"] = { fg = "#D33682" }
+
+				-- mini.tabline hooks into these links
+				hl.TabLineCurrent = { bg = c.base03 }
+				hl.TabLineVisible = { bg = c.base04 }
+				hl.TabLineHidden = { bg = c.base04 }
+
+				hl.TabLineModifiedCurrent = { bg = c.base03, italic = true, underline = true }
+				hl.TabLineModifiedVisible = { bg = c.base04, italic = true, underline = true }
+				hl.TabLineModifiedHidden = { bg = c.base04, italic = true, underline = true }
 			end,
 		})
 
