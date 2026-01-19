@@ -16,6 +16,7 @@ return {
 		},
 		config = function()
 			require("mini.files").setup()
+			require("cmp").setup.filetype("minifiles", { enabled = false })
 		end,
 	},
 }
