@@ -55,14 +55,6 @@ map(
 	{ desc = "Telescope find all files" }
 )
 
--- Lazygit
-map("n", "<leader>gg", function()
-	local path = "~/.config/lazygit/config.nvim.yml"
-	vim.env.LG_CONFIG_FILE = vim.fn.expand(path)
-	vim.cmd.term("lazygit")
-	vim.cmd.startinsert()
-end, { desc = "Lazygit terminal" })
-
 -- LSP (buffer-local)
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)

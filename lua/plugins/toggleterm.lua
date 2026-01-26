@@ -7,6 +7,28 @@ return {
 		{ "<M-\\>", "<cmd>ToggleTerm direction=float<cr>", desc = "ToggleTerm (floating)" },
 		{ "<M-h>", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "ToggleTerm (horizontal)" },
 		{ "<M-v>", "<cmd>ToggleTerm direction=vertical<cr>", desc = "ToggleTerm (vertical)" },
+		{
+			"<leader>gg",
+			(function()
+				local lazygit_term = nil
+				return function()
+					local path = "~/.config/lazygit/config.nvim.yml"
+					vim.env.LG_CONFIG_FILE = vim.fn.expand(path)
+
+					if not lazygit_term then
+						local Terminal = require("toggleterm.terminal").Terminal
+						lazygit_term = Terminal:new({
+							cmd = "lazygit",
+							hidden = true,
+							direction = "tab",
+						})
+					end
+
+					lazygit_term:toggle()
+				end
+			end)(),
+			desc = "Lazygit (ToggleTerm tab)",
+		},
 	},
 	opts = {
 		direction = "float",
