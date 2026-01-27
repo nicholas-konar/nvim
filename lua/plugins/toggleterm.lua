@@ -21,6 +21,13 @@ return {
 							cmd = "lazygit",
 							hidden = true,
 							direction = "tab",
+							on_open = function(term)
+								vim.schedule(function()
+									-- let lazygit own <Esc>
+									vim.keymap.del("t", "<Esc>", { buffer = term.bufnr })
+									vim.keymap.del("t", "<Esc><Esc>", { buffer = term.bufnr })
+								end)
+							end,
 						})
 					end
 
