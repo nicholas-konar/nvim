@@ -6,7 +6,7 @@ return {
 	dependencies = {
 		-- completion sources
 		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-nvim-lsp-signature-help",
+		-- "hrsh7th/cmp-nvim-lsp-signature-help",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-nvim-lua",
@@ -128,7 +128,7 @@ return {
 			sources = {
 				{ name = "luasnip" },
 				{ name = "nvim_lsp" },
-				{ name = "nvim_lsp_signature_help" },
+				-- { name = "nvim_lsp_signature_help" },
 				{ name = "path" },
 				{ name = "buffer" },
 				{ name = "nvim_lua" },
@@ -153,7 +153,7 @@ return {
 				{ name = "luasnip" },
 				{ name = "nvim_lua" },
 				{ name = "nvim_lsp" },
-				{ name = "nvim_lsp_signature_help" },
+				-- { name = "nvim_lsp_signature_help" },
 				{ name = "path" },
 				-- { name = "buffer" },
 			},
