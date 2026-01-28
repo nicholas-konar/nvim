@@ -10,7 +10,7 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { silent = true })
 
 map("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 map("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Prev buffer" })
-map("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close buffer" })
+map("n", "<leader>x", "<cmd>bnext<bar>bdelete #<CR>", { desc = "Close buffer" })
 
 -- Insert mode nav
 map("i", "<C-h>", "<Left>", { desc = "move left" })
