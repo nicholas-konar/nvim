@@ -19,6 +19,16 @@ return {
 		vim.g.loaded_netrwPlugin = 1
 	end,
 	opts = {
+		on_attach = function(bufnr)
+			local api = require("nvim-tree.api")
+			local function opts(desc)
+				return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+			end
+
+			vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close parent directory"))
+			vim.keymap.set("n", "l", api.node.open.preview, opts("Open"))
+		end,
+
 		hijack_cursor = true,
 		respect_buf_cwd = true,
 		sync_root_with_cwd = true,
