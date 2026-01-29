@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-mini/mini.files",
 		version = "*",
+		enabled = false,
 		keys = {
 			{
 				"<leader>e",
