@@ -25,6 +25,7 @@ return {
 				return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
 			end
 
+			api.config.mappings.default_on_attach(bufnr)
 			vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close parent directory"))
 			vim.keymap.set("n", "l", api.node.open.preview, opts("Open"))
 		end,
