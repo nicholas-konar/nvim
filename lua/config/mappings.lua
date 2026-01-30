@@ -63,20 +63,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			map(mode, lhs, rhs, { buffer = bufnr, desc = desc })
 		end
 
-		-- Navigation
-		bufmap("n", "gd", vim.lsp.buf.definition, "LSP definition")
+		-- Navigation (Telescope)
+		local telescope = require("telescope.builtin")
+		bufmap("n", "gt", telescope.lsp_type_definitions, "Telescope type defs")
+		bufmap("n", "gd", telescope.lsp_definitions, "Telescope LSP definitions")
+		bufmap("n", "gr", telescope.lsp_references, "Telescope LSP references")
+		bufmap("n", "gi", telescope.lsp_implementations, "Telescope LSP implementation")
+
 		bufmap("n", "gD", vim.lsp.buf.declaration, "LSP declaration")
-		bufmap("n", "gr", vim.lsp.buf.references, "LSP references")
-		bufmap("n", "gi", vim.lsp.buf.implementation, "LSP implementation")
 		bufmap("n", "K", vim.lsp.buf.hover, "LSP hover")
 
 		-- Actions
 		bufmap("n", "<leader>rn", vim.lsp.buf.rename, "LSP rename")
 		bufmap("n", "<leader>ca", vim.lsp.buf.code_action, "LSP code action")
 
-		-- Symbols
-		bufmap("n", "<leader>ds", vim.lsp.buf.document_symbol, "LSP document symbols")
-		bufmap("n", "<leader>ws", vim.lsp.buf.workspace_symbol, "LSP workspace symbols")
+		-- Symbols (Telescope)
+		bufmap("n", "<leader>ds", telescope.lsp_document_symbols, "Telescope document symbols")
+		bufmap("n", "<leader>ws", telescope.lsp_workspace_symbols, "Telescope workspace symbols")
 
 		-- Diagnostics
 		bufmap("n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")
