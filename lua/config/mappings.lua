@@ -40,7 +40,7 @@ map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
 -- Telescope
-map("n", "<leader>ff", "<cmd>Telescope git_files<CR>", { desc = "Telescope find files" })
+map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Telescope find files" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope recent files" })
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "Telescope live grep" })
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope fuzzy find %" })
