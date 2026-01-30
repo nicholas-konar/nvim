@@ -18,7 +18,7 @@ return {
 				{ mode = "x", keys = "a", desc = "mini.ai: select around textobject" },
 			},
 			window = {
-				delay = 0,
+				delay = 200,
 				scroll_up = "<C-k>",
 				scroll_down = "<C-j>",
 				config = function()
