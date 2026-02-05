@@ -21,6 +21,8 @@ return {
 			python = { "black" },
 			javascript = { "prettierd", "eslint_d" },
 			typescript = { "prettierd", "eslint_d" },
+			json = { "prettierd" },
+			jsonc = { "prettierd" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",
