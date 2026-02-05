@@ -46,6 +46,9 @@ return {
 					end
 				end,
 			},
+			prismals = {
+				capabilities = capabilities,
+			},
 		}
 
 		for name, config in pairs(servers) do

@@ -2,9 +2,23 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
+		branch = "main",
 		build = ":TSUpdate",
 		init = function()
-			require("nvim-treesitter").install({ "typescript", "javascript", "python", "lua" })
+			require("nvim-treesitter").install({
+				"typescript",
+				"javascript",
+				"prisma",
+				"python",
+				"lua",
+			})
+		end,
+
+		config = function()
+			require("nvim-treesitter").setup({
+				highlight = { enable = true },
+				indent = { enable = true },
+			})
 		end,
 	},
 	{
