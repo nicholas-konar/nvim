@@ -14,6 +14,9 @@ return {
 				hl.LineNrBelow = { fg = c.base02 }
 				hl.CursorLineNr = { fg = c.base1, bold = true }
 
+				-- floating window border
+				hl.FloatBorder = { fg = c.yellow500 }
+
 				-- nvim-cmp groups
 				hl.CmpItemAbbrMatch = { fg = c.yellow500, bold = true }
 				hl.CmpItemAbbrMatchFuzzy = { fg = c.yellow500, bold = true }
