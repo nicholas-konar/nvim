@@ -6,3 +6,6 @@ vim.opt.cursorline = true
 vim.opt.number = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- Global floating window borders: 'rounded', 'single', 'double', 'solid', 'shadow', or 'none'
+vim.opt.winborder = "single"

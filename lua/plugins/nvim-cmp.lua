@@ -20,9 +20,6 @@ return {
 		local cmp = require("cmp")
 		local context = require("cmp.config.context")
 		local luasnip = require("luasnip")
-		local float_winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None"
-		local menu_winhighlight =
-			"Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None,Pmenu:NormalFloat"
 
 		-- load VS Code–style snippet collections
 		pcall(function()
@@ -76,12 +73,10 @@ return {
 			window = {
 				completion = cmp.config.window.bordered({
 					border = "single",
-					winhighlight = menu_winhighlight,
 					max_view_entries = 5,
 				}),
 				documentation = cmp.config.window.bordered({
 					border = "single",
-					winhighlight = float_winhighlight,
 				}),
 			},
 
