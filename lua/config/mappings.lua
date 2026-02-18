@@ -71,7 +71,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		bufmap("n", "gi", telescope.lsp_implementations, "Telescope LSP implementation")
 
 		bufmap("n", "gD", vim.lsp.buf.declaration, "LSP declaration")
-		bufmap("n", "K", vim.lsp.buf.hover, "LSP hover")
+		bufmap("n", "K", function()
+			vim.lsp.buf.hover({ focus = false })
+		end, "LSP hover")
 
 		-- Actions
 		bufmap("n", "<leader>rn", vim.lsp.buf.rename, "LSP rename")
