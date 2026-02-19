@@ -25,7 +25,19 @@ return {
 			},
 
 			ts_ls = {
-				capabilities = capabilities,
+				capabilities = vim.tbl_deep_extend("force", capabilities, {
+					workspace = {
+						fileOperations = {
+							willRename = true,
+							didRename = true,
+							willCreate = true,
+							didCreate = true,
+							willDelete = true,
+							didDelete = true,
+							dynamicRegistration = true,
+						},
+					},
+				}),
 
 				root_dir = function(bufnr, on_dir)
 					local fname = vim.api.nvim_buf_get_name(bufnr)
