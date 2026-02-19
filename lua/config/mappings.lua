@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- Actions
 		bufmap("n", "<leader>rn", vim.lsp.buf.rename, "LSP rename")
-		bufmap("n", "<leader>ca", vim.lsp.buf.code_action, "LSP code action")
+		bufmap("n", "<leader>ca", vim.lsp.buf.code_action, "LSP code actions")
 
 		-- Symbols (Telescope)
 		bufmap("n", "<leader>ds", telescope.lsp_document_symbols, "Telescope document symbols")
