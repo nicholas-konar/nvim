@@ -2,6 +2,13 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Disable vim_defaults gr* keybindings to avoid prefix conflict with custom gr mapping
+vim.keymap.del("n", "grt")
+vim.keymap.del("n", "gri")
+vim.keymap.del("n", "grr")
+vim.keymap.del("n", "gra")
+vim.keymap.del("n", "grn")
+
 local map = vim.keymap.set
 
 -- Basic QoL
