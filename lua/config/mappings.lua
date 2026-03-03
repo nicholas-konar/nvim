@@ -46,6 +46,53 @@ end, { desc = "Copy relative path" })
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
+-- Lazygit
+local lazygit_bufnr = nil
+
+map("n", "<leader>gg", function()
+	local path = "~/.config/lazygit/config.nvim.yml"
+	vim.env.LG_CONFIG_FILE = vim.fn.expand(path)
+
+	-- Close nvim-tree if open
+	local tree_ok, tree = pcall(require, "nvim-tree.api")
+	if tree_ok and tree.tree.is_visible() then
+		tree.tree.close()
+	end
+
+	-- Check if lazygit buffer still exists and is valid
+	if lazygit_bufnr and vim.api.nvim_buf_is_valid(lazygit_bufnr) then
+		vim.cmd("buffer " .. lazygit_bufnr)
+		vim.cmd("startinsert")
+		return
+	end
+
+	vim.cmd("enew")
+	vim.cmd("term lazygit")
+
+	-- Store the buffer number for reuse
+	lazygit_bufnr = vim.api.nvim_get_current_buf()
+
+	-- Set a clean buffer name
+	vim.api.nvim_buf_set_name(lazygit_bufnr, "lazygit")
+
+	-- Set up lazygit-specific mappings and autocommand
+	vim.schedule(function()
+		local opts = { buffer = true, silent = true }
+		-- Lazygit-specific: use Ctrl+G to exit terminal mode (avoids Esc debounce)
+		vim.keymap.set("t", "<C-g>", [[<C-\><C-n>]], opts)
+
+		-- Close buffer when terminal process exits
+		vim.api.nvim_create_autocmd("TermClose", {
+			buffer = vim.api.nvim_get_current_buf(),
+			callback = function()
+				vim.cmd("bdelete!")
+			end,
+		})
+	end)
+
+	vim.cmd("startinsert")
+end, { desc = "Lazygit (buffer)" })
+
 -- Telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Telescope find files" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope recent files" })
